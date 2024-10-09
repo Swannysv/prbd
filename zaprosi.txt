@@ -1,0 +1,24 @@
+SELECT 
+    distinct `student`.`studname` as 'имя студента',`student`.`group_#gr` as 'группа студента', `mark` as 'оценка',  `subject`.`sabjname` as 'предмет'
+FROM
+    `student`, `vedomost`, `subject`
+WHERE
+    `vedomost`.`mark` = '5'  and `sabjname`='математика' and `vedomost`.`student_#stud` = `student`.`#stud` and `vedomost`.`subject_#sabg`=`subject`.`#sabg`;
+
+
+SELECT 
+     `studname` as 'имя студента',`group_#gr` as 'группа студента', `mark` as 'оценка'
+FROM
+    `student`, `vedomost`
+WHERE
+    `vedomost`.`mark` = '4' and  `student`.`group_#gr` = '2.2.22' and `vedomost`.`student_#stud` = `student`.`#stud`;
+    
+
+SELECT 
+    distinct `student`.`studname` as 'имя',`student`.`group_#gr` as 'группа', `mark` as 'оценка',  `subject`.`sabjname` as 'предмет'
+FROM
+    `student`, `vedomost`, `subject`
+WHERE
+    (`vedomost`.`mark` = '5'
+    Or  `vedomost`.`mark` = '4')
+    and `sabjname`='иняз';
