@@ -1,7 +1,7 @@
 SELECT 
     `director`.`dirname`, `director`.`facult`
 FROM
-    `univer008_Lina`.`director`
+    `univer008`.`director`
 WHERE
     `director`.`facult` = 'ФТП';
     
