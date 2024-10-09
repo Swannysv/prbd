@@ -1,22 +1,24 @@
 SELECT 
-    `director`.`dirname`, `director`.`facult`
+    distinct `student`.`studname` as 'имя студента',`student`.`group_#gr` as 'группа студента', `mark` as 'оценка',  `subject`.`sabjname` as 'предмет'
 FROM
-    `univer008`.`director`
+    `student`, `vedomost`, `subject`
 WHERE
-    `director`.`facult` = 'ФТП';
-    
-    SELECT 
-    distinct  `student`.`studname` as "имя студента",`student`.`group_#gr` as "группа", `vedomost`.`mark` as "оценка",`subject`.`sabjname` as "предмет"
-FROM
- `student`,`vedomost`, `subject`
-WHERE
- `vedomost`.`mark` = "5" and `student`.`group_#gr` = "001" and `subject`.`sabjname` = "химия" and `vedomost`.`student_#stud` = `student`.`#stud`=`subject`.`sabjname`;
- 
- 
+    `vedomost`.`mark` = '5'  and `sabjname`='математика' and `vedomost`.`student_#stud` = `student`.`#stud` and `vedomost`.`subject_#sabg`=`subject`.`#sabg`;
+
+
 SELECT 
-    distinct `studname` as 'имя студента',`group_#gr` as 'группа студента', `mark` as 'оценка'
+     `studname` as 'имя студента',`group_#gr` as 'группа студента', `mark` as 'оценка'
 FROM
     `student`, `vedomost`
 WHERE
-    `vedomost`.`mark` = '5' and  `student`.`group_#gr` = '1.21' and `vedomost`.`student_#stud` = `student`.`#stud`;
+    `vedomost`.`mark` = '4' and  `student`.`group_#gr` = '1.22' and `vedomost`.`student_#stud` = `student`.`#stud`;
     
+
+SELECT 
+    distinct `student`.`studname` as 'имя',`student`.`group_#gr` as 'группа', `mark` as 'оценка',  `subject`.`sabjname` as 'предмет'
+FROM
+    `student`, `vedomost`, `subject`
+WHERE
+    (`vedomost`.`mark` = '5'
+    Or  `vedomost`.`mark` = '4')
+    and `sabjname`='английский язык';
